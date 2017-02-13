@@ -1,2 +1,1 @@
-# java_pft
-Учебные проекты
+﻿# My projects
