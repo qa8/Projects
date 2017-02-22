@@ -1,10 +1,13 @@
 package mf_plus.appmanager;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by admin on 27.11.2016.
@@ -23,7 +26,7 @@ public class HelperBase {
         getElement(locator).click();
     }
 
-    private WebElement getElement(By locator) {
+    protected WebElement getElement(By locator) {
         return wd.findElement(locator);
     }
 
@@ -63,8 +66,42 @@ public class HelperBase {
         }
     }
 
-    protected void waitForPage() {
+    protected void waitForDisappear(By locator) {
         WebDriverWait wait=new WebDriverWait(wd,10);
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("page-preloader")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
+
+    protected void waitForElementClickable(By locator){
+        WebDriverWait wait=new WebDriverWait(wd,10);
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    protected void waitForElementVisible(By locator){
+        WebDriverWait wait=new WebDriverWait(wd,10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    protected void waitSimple(long t){
+        try {
+            Thread.sleep(t);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+//        WebDriverWait wait=new WebDriverWait(wd,t);
+//        wait.withTimeout(t, TimeUnit.SECONDS);
+    }
+
+    protected void chooseElement(By locator){
+        Actions builder = new Actions(wd);
+        builder.moveToElement(getElement(locator)).click();
+        Action mouseOverAndClick = builder.build();
+        mouseOverAndClick.perform();
+    }
+
+    protected void chooseElement(WebElement element){
+        Actions builder = new Actions(wd);
+        builder.moveToElement(element).click();
+        Action mouseOverAndClick = builder.build();
+        mouseOverAndClick.perform();
     }
 }

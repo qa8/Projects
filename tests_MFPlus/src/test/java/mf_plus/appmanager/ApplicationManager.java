@@ -22,6 +22,12 @@ public class ApplicationManager {
 
     private String browser;
     private SessionHelper sessionHelper;
+    private NavigationHelper navigationHelper;
+    private QuotationsHelper quotationsHelper;
+    private PartyFormsHelper partyFormsHelper;
+    private CostsHelper costsHelper;
+    private TimeSheetsHelper timeSheetsHelper;
+    private BookingSectionHelper bookingSectionHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -32,7 +38,7 @@ public class ApplicationManager {
     public void init() throws IOException {
         String target=System.getProperty("target","local");
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties",target))));
-
+        session();
     }
 
     public void stop() {
@@ -65,5 +71,47 @@ public class ApplicationManager {
             sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
         }
         return sessionHelper;
+    }
+
+    public NavigationHelper goTo() {
+        if (navigationHelper==null){
+            navigationHelper = new NavigationHelper(this);
+        }
+        return navigationHelper;
+    }
+
+    public QuotationsHelper quotations() {
+        if (quotationsHelper==null){
+            quotationsHelper = new QuotationsHelper(this);
+        }
+        return quotationsHelper;
+    }
+
+    public PartyFormsHelper partyForms() {
+        if (partyFormsHelper==null){
+            partyFormsHelper = new PartyFormsHelper(this);
+        }
+        return partyFormsHelper;
+    }
+
+    public CostsHelper costs() {
+        if (costsHelper==null){
+            costsHelper = new CostsHelper(this);
+        }
+        return costsHelper;
+    }
+
+    public TimeSheetsHelper timeSheets() {
+        if (timeSheetsHelper ==null){
+            timeSheetsHelper = new TimeSheetsHelper(this);
+        }
+        return timeSheetsHelper;
+    }
+
+    public BookingSectionHelper booking() {
+        if (bookingSectionHelper ==null){
+            bookingSectionHelper = new BookingSectionHelper(this);
+        }
+        return bookingSectionHelper;
     }
 }
