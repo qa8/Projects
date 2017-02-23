@@ -18,9 +18,9 @@ public class QuotationsHelper extends HelperBase {
         waitForDisappear(By.id("page-preloader"));
     }
 
-    public void chooseQuotation(int number){
+    public void chooseQuotation(String number){
         waitForDisappear(By.id("page-preloader"));
-        click(By.linkText(""+number));
+        click(By.linkText(number));
     }
 
 }

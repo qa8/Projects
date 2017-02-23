@@ -104,4 +104,30 @@ public class HelperBase {
         Action mouseOverAndClick = builder.build();
         mouseOverAndClick.perform();
     }
+
+    public void chooseFromListWithInput(By listLocator,By elementLocator,String value){
+        waitForDisappear(By.id("page-preloader"));
+        waitSimple(1000);
+        waitForElementClickable(listLocator);
+        if (getElement(listLocator).getAttribute("value").equals(value)==false) {
+            waitSimple(3000);
+            type(listLocator, value);
+            waitForDisappear(By.id("page-preloader"));
+            waitForElementClickable(elementLocator);
+            wd.findElement(elementLocator).click();
+            waitSimple(3000);
+        }
+    }
+
+    public void chooseFromListWithoutInput(By listLocator,By elementLocator){
+        waitForElementVisible(listLocator);
+        if (getElement(listLocator).getText().equals("")) {
+            waitSimple(3000);
+            click(listLocator);
+//            waitForElementVisible(elementLocator);
+            waitSimple(3000);
+            chooseElement(elementLocator);
+        }
+        waitForDisappear(By.id("page-preloader"));
+    }
 }

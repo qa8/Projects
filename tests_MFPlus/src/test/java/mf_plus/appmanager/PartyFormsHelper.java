@@ -34,21 +34,25 @@ public class PartyFormsHelper extends HelperBase {
         waitForDisappear(By.id("page-preloader"));
     }
 
-    public void chooseClient(String clientName){
-        waitForDisappear(By.id("page-preloader"));
-        waitSimple(1000);
-//        waitForDisappear(By.linkText("Please, write in Booking section"));
-        waitForElementClickable(By.id("client"));
-        if (getElement(By.id("client")).getAttribute("value").equals(clientName)==false) {
-            type(By.id("client"), clientName);
-            waitForDisappear(By.id("page-preloader"));
-            waitForElementClickable(By.xpath(String.format("//div[@class='k-animation-container']//li[.='%s']", clientName)));
-            wd.findElement(By.xpath(String.format("//div[@class='k-animation-container']//li[.='%s']", clientName))).click();
-//            waitForDisappear(By.linkText("Please, enter Client"));
-            waitForDisappear(By.id("page-preloader"));
-            waitSimple(1000);
-        }
-    }
+//    public void chooseClient(String clientName){
+//        waitForDisappear(By.id("page-preloader"));
+//        waitSimple(1000);
+//        waitForElementClickable(By.id("client"));
+//        if (getElement(By.id("client")).getAttribute("value").equals(clientName)==false) {
+//            type(By.id("client"), clientName);
+//            waitForDisappear(By.id("page-preloader"));
+//            waitForElementClickable(By.xpath(String.format("//div[@class='k-animation-container']//li[.='%s']", clientName)));
+//            wd.findElement(By.xpath(String.format("//div[@class='k-animation-container']//li[.='%s']", clientName))).click();
+//            waitForDisappear(By.id("page-preloader"));
+//            waitSimple(1000);
+//        }
+//    }
 
+    public void chooseClient(String clientName){
+        By listLocator=By.id("client");
+        By elementLocator=By.xpath(String.format("//div[@class='k-animation-container']//li[.='%s']", clientName));
+        chooseFromListWithInput(listLocator,elementLocator,clientName);
+        waitForDisappear(By.id("page-preloader"));
+    }
 
 }
