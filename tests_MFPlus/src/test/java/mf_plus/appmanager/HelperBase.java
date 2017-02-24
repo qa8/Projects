@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by admin on 27.11.2016.
@@ -109,7 +108,7 @@ public class HelperBase {
         waitForDisappear(By.id("page-preloader"));
         waitSimple(1000);
         waitForElementClickable(listLocator);
-        if (getElement(listLocator).getAttribute("value").equals(value)==false) {
+        if (getElement(listLocator).getAttribute("value").equals("")) {
             waitSimple(3000);
             type(listLocator, value);
             waitForDisappear(By.id("page-preloader"));
@@ -119,9 +118,10 @@ public class HelperBase {
         }
     }
 
-    public void chooseFromListWithoutInput(By listLocator,By elementLocator){
+    public void chooseFromListWithoutInput(By listLocator, By elementLocator, String toCompare){
         waitForElementVisible(listLocator);
-        if (getElement(listLocator).getText().equals("")) {
+        String text=getElement(listLocator).getText();
+        if (getElement(listLocator).getText().equals(toCompare)) {
             waitSimple(3000);
             click(listLocator);
 //            waitForElementVisible(elementLocator);

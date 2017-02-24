@@ -13,6 +13,10 @@ public class QuotationData {
     private String accountContact;
     private String source;
     private String clientName;
+    private String jobType;
+    private String mode;
+    private String type;
+    private String service;
 
     public String getNumber() {
         return number;
@@ -46,6 +50,21 @@ public class QuotationData {
         return clientName;
     }
 
+    public String getJobType() {
+        return jobType;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getService() {
+        return service;
+    }
 
     public QuotationData withNumber(String number) {
         this.number = number;
@@ -86,4 +105,24 @@ public class QuotationData {
         this.clientName = clientName;
         return this;
     }
+
+    public QuotationData withJobType(String jobType) {
+        this.jobType = jobType;
+        return this;
+    }
+    public QuotationData withMode(String mode) {
+        this.mode = mode;
+        return this;
+    }
+
+    public QuotationData withType(String type) {
+        this.type = type;
+        return this;
+    }
+
+    public QuotationData withService(String service) {
+        this.service = service;
+        return this;
+    }
+
 }
