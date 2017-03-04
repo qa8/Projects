@@ -1,5 +1,7 @@
 package mf_plus.model;
 
+import java.util.LinkedList;
+
 /**
  * Created by admin on 22.02.2017.
  */
@@ -17,6 +19,7 @@ public class QuotationData {
     private String mode;
     private String type;
     private String service;
+    private LinkedList<CostsData> costs = new LinkedList<CostsData>();
 
     public String getNumber() {
         return number;
@@ -122,6 +125,11 @@ public class QuotationData {
 
     public QuotationData withService(String service) {
         this.service = service;
+        return this;
+    }
+
+    public QuotationData addCost(CostsData cd){
+        costs.add(cd);
         return this;
     }
 

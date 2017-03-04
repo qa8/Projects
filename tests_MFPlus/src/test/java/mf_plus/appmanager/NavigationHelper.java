@@ -71,4 +71,19 @@ public class NavigationHelper extends HelperBase {
     }
 
 
+    public void fromQuotToHomePage() {
+        waitForDisappear(By.id("page-preloader"));
+        waitSimple(500);
+        click(By.xpath("//div[2]/div/div[1]/div/div/div/a"));
+        waitForDisappear(By.id("page-preloader"));
+        waitSimple(1000);
+    }
+
+    public void fromJSToHomePage() {
+        waitForDisappear(By.id("page-preloader"));
+        click(By.xpath("//div[2]/div/div[1]/div/div/a"));
+        waitForDisappear(By.id("page-preloader"));
+        waitSimple(1000);
+    }
 }
+

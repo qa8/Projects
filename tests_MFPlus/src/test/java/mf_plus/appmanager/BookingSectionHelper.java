@@ -39,13 +39,19 @@ public class BookingSectionHelper extends HelperBase {
     public void chooseBooker(String bookerName){
         By listLocator = By.id("booker");
         By elementLocator = By.xpath(String.format("//ul[@id='booker_listbox']//li[.='%s']", bookerName));
-        chooseFromListWithInput(listLocator,elementLocator,bookerName);
+        if (getElement(listLocator).getText().equals("")) {
+            chooseFromListWithInput(listLocator, elementLocator, bookerName);
+        }
     }
 
     public void chooseBookerContact(String bookerContact){
         By listLocator = By.xpath("//div[2]/div/div[2]/div[1]/div/div[4]/div[2]/div/div[1]/div/div/form/div/div[4]/div[2]/span/span/span[1]");
         By elementLocator = By.xpath(String.format("//ul[@id='bookedContact_listbox']//li[.='%s']",bookerContact));
-        chooseFromListWithoutInput(listLocator,elementLocator, "");
+        for (int i=0;i<=3;i++) {
+            if (getElement(listLocator).getText().equals("")) {
+                chooseFromListWithoutInput(listLocator,elementLocator, "");
+            }
+        }
     }
 
     public void chooseAccount(String accountName){

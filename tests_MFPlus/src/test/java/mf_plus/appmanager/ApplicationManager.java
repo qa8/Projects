@@ -28,6 +28,7 @@ public class ApplicationManager {
     private CostsHelper costsHelper;
     private TimeSheetsHelper timeSheetsHelper;
     private BookingSectionHelper bookingSectionHelper;
+    private SurveysHelper surveysHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -85,6 +86,13 @@ public class ApplicationManager {
             quotationsHelper = new QuotationsHelper(this);
         }
         return quotationsHelper;
+    }
+
+    public SurveysHelper surveys() {
+        if (surveysHelper==null){
+            surveysHelper = new SurveysHelper(this);
+        }
+        return surveysHelper;
     }
 
     public PartyFormsHelper partyForms() {
