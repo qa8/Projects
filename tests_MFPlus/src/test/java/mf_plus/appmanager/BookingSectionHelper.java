@@ -27,6 +27,8 @@ public class BookingSectionHelper extends HelperBase {
     public void chooseSource(String source){
         By listLocator = By.xpath("//div[2]/div/div[2]/div[1]/div/div[4]/div[2]/div/div[1]/div/div/form/div/div[7]/div/span/span/span[1]");
         By elementLocator = By.xpath(String.format("//ul[@id='source_listbox']//li[.='%s']",source));
+//        By elementLocator = By.xpath("//div[18]/div/div[3]/ul/li[1]");
+
         chooseFromListWithoutInput(listLocator,elementLocator, "");
         for (int i=0;i<=3;i++) {
             if (getElement(listLocator).getText().equals("")) {
@@ -37,9 +39,10 @@ public class BookingSectionHelper extends HelperBase {
     }
 
     public void chooseBooker(String bookerName){
+        waitSimple(1000);
         By listLocator = By.id("booker");
         By elementLocator = By.xpath(String.format("//ul[@id='booker_listbox']//li[.='%s']", bookerName));
-        if (getElement(listLocator).getText().equals("")) {
+        if (getElement(listLocator).getAttribute("value").equals("")) {
             chooseFromListWithInput(listLocator, elementLocator, bookerName);
         }
     }

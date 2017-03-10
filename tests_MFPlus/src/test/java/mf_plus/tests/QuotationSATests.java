@@ -9,33 +9,35 @@ import org.testng.annotations.Test;
  */
 public class QuotationSATests extends TestBase {
 
-    @Test(enabled = false)
+    @Test(priority = 1)
     public void testSAQuotationCreate() {
-        QuotationData q1 = new QuotationData().withNumber("115").withBookingType("Agent").withBooker("ES_DIV01")
+        QuotationData q1 = new QuotationData().withNumber("115").withBookingType("Private").withBooker("ES_DIV01")
                 .withBookerContact("ES_Polina ES_Smirnov").withAccount("").withAccountContact("").withSource("Mail")
                 .withClientName("ES_TestClient7").withJobType("Export").withMode("Air AIR").withType("DTD")
                 .withService("Full Origin Service");
         app.goTo().quotationsMainViewPage();
         app.quotations().newSAQuotation();
-        app.booking().fillBookingForm(q1);
-//        app.partyForms().fillNewClientForm(7);
-        app.partyForms().chooseClient(q1.getClientName());
-        app.partyForms().editClientDetails();
-        app.quotations().fillSecondLine(q1);
         String curNum = app.quotations().getQuoteNum();
         app.quotations().setCurrNum(curNum);
+//        app.booking().fillBookingForm(q1);
+//        app.partyForms().fillNewClientForm(7);
+//        app.partyForms().chooseClient(q1.getClientName());
+//        app.partyForms().editClientDetails();
+//        app.quotations().fillSecondLine(q1);
         app.goTo().fromQuotToHomePage();
 
     }
 
-    @Test(priority = 1)
+    @Test(priority = 2)
     public void testSAQuotationEdit(){
-        QuotationData q1 = new QuotationData().withNumber("152").withBookingType("Agent").withBooker("ES_DIV01")
+        QuotationData q1 = new QuotationData().withNumber("157").withBookingType("Agent").withBooker("ES_DIV01")
                 .withBookerContact("ES_Polina ES_Smirnov").withAccount("").withAccountContact("").withSource("Mail")
                 .withClientName("ES_TestClient7").withJobType("Export").withMode("Air AIR").withType("DTD")
                 .withService("Full Origin Service");
         app.goTo().quotationsMainViewPage();
-        app.quotations().chooseQuotation(q1.getNumber());
+        String curNum = app.quotations().getCurrNum();
+        String num = curNum.equals("") ? q1.getNumber() : curNum;
+        app.quotations().chooseQuotation(num);
         app.booking().fillBookingForm(q1);
 ////        app.partyForms().fillNewClientForm(7);
 //
@@ -46,7 +48,7 @@ public class QuotationSATests extends TestBase {
         app.goTo().fromQuotToHomePage();
     }
 
-    @Test(priority = 2)
+    @Test(priority = 3)
     public void testSAQuotationCosts(){
         CostsData c1 = new CostsData().withVendor("ES_DIV01").withType("Quotation").withDescription("Internal cost").withSum(1000.50);
         CostsData c2 = new CostsData().withVendor("ES_1Agent").withType("Quotation").withDescription("FR").withSum(2000);
@@ -59,7 +61,7 @@ public class QuotationSATests extends TestBase {
         app.goTo().fromQuotToHomePage();
     }
 
-    @Test(priority = 3)
+    @Test(priority = 4)
     public void testSAQuotationToClientFile(){
         app.goTo().quotationsMainViewPage();
         String curNum = app.quotations().getCurrNum();

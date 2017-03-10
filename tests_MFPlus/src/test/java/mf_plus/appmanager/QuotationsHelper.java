@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
  */
 public class QuotationsHelper extends HelperBase {
 
-    public String currNum;
+    public String currNum = "";
 
     public QuotationsHelper(ApplicationManager app) {
         super(app);
@@ -155,10 +155,17 @@ public class QuotationsHelper extends HelperBase {
         waitForDisappear(By.id("page-preloader"));
         waitSimple(10000);
         By listLocator = By.xpath("//div[2]/div/div[2]/div[1]/div/div[1]/div/div/div/form/div/div[5]/div[1]/ul/li/span");
-        By elementLocator = By.xpath("//div[@class='k-animation-container']//span[.='Invoice']");
+//        By elementLocator = By.xpath("//div[@class='k-animation-container']//span[.='Invoice']");
+        By elementLocator = By.xpath("//div[2]/div/div[2]/div[1]/div/div[1]/div/div/div/form/div/div[5]/div[1]/ul/li/div/ul/li/span");
         click(listLocator);
         waitSimple(1000);
         chooseElement(elementLocator);
         waitSimple(50000);
+
+    }
+
+    public String getInvoiceNum() {
+        String num = getElement(By.xpath("//div[2]/div/div[2]/div[1]/div[1]/div[1]/span[2]")).getText();
+        return num;
     }
 }
