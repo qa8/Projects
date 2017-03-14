@@ -17,7 +17,7 @@ public class NavigationHelper extends HelperBase {
         click(By.id("menu-item-1942"));
     }
 
-    public void tecnologyPage(){
+    public void technologyPage(){
         click(By.id("menu-item-1951"));
     }
 
@@ -37,5 +37,16 @@ public class NavigationHelper extends HelperBase {
         click(By.id("menu-item-2018"));
     }
 
+    public void learnMore(){
+        click(By.linkText("LEARN MORE"));
+    }
+
+    public void downloadApp(){
+        click(By.linkText("DOWNLOAD THE APP"));
+    }
+
+    public void downloadPlugin(){
+
+    }
 }
 
