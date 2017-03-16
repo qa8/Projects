@@ -41,7 +41,7 @@ public class NavigationHelper extends HelperBase {
         click(By.linkText("LEARN MORE"));
     }
 
-    public void downloadApp(){
+    public void downloadAppPage(){
         click(By.linkText("DOWNLOAD THE APP"));
     }
 

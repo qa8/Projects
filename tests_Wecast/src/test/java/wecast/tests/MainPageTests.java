@@ -64,8 +64,8 @@ public class MainPageTests extends TestBase {
     }
 
     @Test
-    public void testDownloadApp(){
-        app.goTo().downloadApp();
+    public void testDownloadAppPage(){
+        app.goTo().downloadAppPage();
         assertTrue(app.getDriver().getCurrentUrl().contains("google"));
         app.getDriver().navigate().back();
     }
