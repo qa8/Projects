@@ -49,4 +49,36 @@ public class HomePage extends Page {
   public HomePage(WebDriver webDriver) {
     super(webDriver);
   }
+
+  public void learnMore() {
+    clickElement(learnMore);
+  }
+
+  public void storyPage() {
+    clickElement(storyPage);
+  }
+
+  public void technologyPage() {
+    clickElement(technologyPage);
+  }
+
+  public void faqsPage() {
+    clickElement(faqsPage);
+  }
+
+  public void blogPage() {
+    clickElement(blogPage);
+  }
+
+  public void contactPage() {
+    clickElement(contactPage);
+  }
+
+  public void preOrderPage() {
+    clickElement(preOrderPage);
+  }
+
+  public void downloadAppPage() {
+    clickElement(downloadAppPage);
+  }
 }

@@ -208,7 +208,7 @@ public abstract class Page {
     wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(element)));
   }
 
-  protected boolean isElementPresent(By by) {
+  public boolean isElementPresent(By by) {
     try {
       driver.findElement(by);
       return true;

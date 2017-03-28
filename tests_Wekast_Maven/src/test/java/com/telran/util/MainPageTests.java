@@ -1,6 +1,9 @@
 package com.telran.util;
 
+import com.telran.pages.HomePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
@@ -8,67 +11,75 @@ import static org.testng.Assert.assertTrue;
 /**
  * Created by admin on 14.03.2017.
  */
-public class MainPageTests extends TestBase {
+public class MainPageTests extends TestNgTestBase {
 
-    @Test(groups = "smoke")
+    public HomePage homePage;
+
+    @BeforeMethod
+    public void initPageObjects() {
+        homePage = PageFactory.initElements(driver, HomePage.class);
+
+    }
+
+    @Test
     public void testOpenMainPage(){
-          assertTrue(app.goTo().isElementPresent(By.linkText("LEARN MORE")));
+          assertTrue(homePage.isElementPresent(By.linkText("LEARN MORE")));
     }
 
-    @Test(groups = "regression")
+    @Test
     public void testLearnMore(){
-        app.goTo().learnMore();
-        assertTrue(app.getDriver().getCurrentUrl().contains("indiegogo"));
-        app.getDriver().navigate().back();
+        homePage.learnMore();
+        assertTrue(driver.getCurrentUrl().contains("indiegogo"));
+        driver.navigate().back();
     }
 
-    @Test(groups = "regression")
+    @Test
     public void testMenuStory(){
-        app.goTo().storyPage();
-        assertTrue(app.goTo().isElementPresent(By.id("post-1797")));
-        app.getDriver().navigate().back();
+        homePage.storyPage();
+//        assertTrue(app.goTo().isElementPresent(By.id("post-1797")));
+        driver.navigate().back();
     }
 
-    @Test(groups = "regression")
+    @Test
     public void testMenuTechnology(){
-        app.goTo().technologyPage();
-        assertTrue(app.goTo().isElementPresent(By.linkText("DOWNLOAD OUR FREE APP")));
-        app.getDriver().navigate().back();
+        homePage.technologyPage();
+//        assertTrue(app.goTo().isElementPresent(By.linkText("DOWNLOAD OUR FREE APP")));
+        driver.navigate().back();
     }
 
-    @Test(groups = "regression")
+    @Test
     public void testMenuFaqs(){
-        app.goTo().faqsPage();
-        assertTrue(app.goTo().isElementPresent(By.linkText("setup instructions")));
-        app.getDriver().navigate().back();
+        homePage.faqsPage();
+//        assertTrue(app.goTo().isElementPresent(By.linkText("setup instructions")));
+        driver.navigate().back();
     }
 
-    @Test(groups = "regression")
+    @Test
     public void testMenuBlog(){
-        app.goTo().blogPage();
-        assertTrue(app.goTo().isElementPresent(By.linkText("PRESENTATION TIPS")));
-        app.getDriver().navigate().back();
+        homePage.blogPage();
+//        assertTrue(app.goTo().isElementPresent(By.linkText("PRESENTATION TIPS")));
+        driver.navigate().back();
     }
 
-    @Test(groups = "regression")
+    @Test
     public void testMenuContact(){
-        app.goTo().contactPage();
-        assertTrue(app.goTo().isElementPresent(By.linkText("info@wekast.com")));
-        app.getDriver().navigate().back();
+        homePage.contactPage();
+//        assertTrue(app.goTo().isElementPresent(By.linkText("info@wekast.com")));
+        driver.navigate().back();
     }
 
-    @Test(groups = "regression")
+    @Test
     public void testMenuPreOrder(){
-        app.goTo().preOrderPage();
-        assertTrue(app.goTo().isElementPresent(By.linkText("Click here to –>Pre-Order")));
-        app.getDriver().navigate().back();
+        homePage.preOrderPage();
+//        assertTrue(app.goTo().isElementPresent(By.linkText("Click here to –>Pre-Order")));
+        driver.navigate().back();
     }
 
-    @Test(groups = "smoke")
+    @Test
     public void testDownloadAppPage(){
-        app.goTo().downloadAppPage();
-        assertTrue(app.getDriver().getCurrentUrl().contains("google"));
-        app.getDriver().navigate().back();
+        homePage.downloadAppPage();
+        assertTrue(driver.getCurrentUrl().contains("google"));
+        driver.navigate().back();
     }
 
 }

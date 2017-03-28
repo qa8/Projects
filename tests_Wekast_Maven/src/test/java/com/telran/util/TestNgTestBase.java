@@ -5,9 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import ru.stqa.selenium.factory.WebDriverPool;
+import ru.stqa.selenium.factory.*;
 
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * Base class for TestNG-based test classes
@@ -32,7 +33,9 @@ public class TestNgTestBase {
 
   @BeforeMethod
   public void initWebDriver() {
-    driver = WebDriverPool.DEFAULT.getDriver(gridHubUrl, capabilities);
+//    driver = WebDriverPool.DEFAULT.getDriver(new URL(gridHubUrl), capabilities);
+    driver = WebDriverPool.DEFAULT.getDriver(capabilities);
+    driver.get(baseUrl);
   }
 
   @AfterSuite(alwaysRun = true)
