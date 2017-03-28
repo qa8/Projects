@@ -51,34 +51,42 @@ public class HomePage extends Page {
   }
 
   public void learnMore() {
+    Log.info("Selecting Learn More");
     clickElement(learnMore);
   }
 
   public void storyPage() {
+    Log.info("Selecting Story Page");
     clickElement(storyPage);
   }
 
   public void technologyPage() {
+    Log.info("Selecting Technology Page");
     clickElement(technologyPage);
   }
 
   public void faqsPage() {
+    Log.info("Selecting FAQs Page");
     clickElement(faqsPage);
   }
 
   public void blogPage() {
+    Log.info("Selecting Blog Page");
     clickElement(blogPage);
   }
 
   public void contactPage() {
+    Log.info("Selecting Contact Page");
     clickElement(contactPage);
   }
 
   public void preOrderPage() {
+    Log.info("Selecting Pre-order Page");
     clickElement(preOrderPage);
   }
 
   public void downloadAppPage() {
+    Log.info("Selecting Download-app Page");
     clickElement(downloadAppPage);
   }
 }
